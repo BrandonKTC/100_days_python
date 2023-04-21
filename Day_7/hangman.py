@@ -22,19 +22,18 @@ while "_" in word_guess and lives > 0:
     print(f"Here is the word: {' '.join(word_guess)}")
 
     guess = input('guess a letter: ')
+    print("\n"*100)
 
 
     if guess in word and guess not in guesses:
-        print("\n"*100)
         guesses.append(guess)
         word_guess = replace_letter(word_guess)
         print(stages[lives])
-    elif guess in guesses:
+    elif guess in guesses :
         print("you have already try this letter")
     else:
         guesses.append(guess)
         lives -= 1
-        print("\n"*100)
         print(f"{guess} not in the word you lost a live")
         print(stages[lives])
 
