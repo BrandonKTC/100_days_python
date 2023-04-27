@@ -54,7 +54,7 @@ while play != 'n':
     show_cards(dealer, "1")
 
     more = input("Type 'y' to get another card, type 'n' to pass: ").lower()
-    # Second hand
+    # Player hand
     while more != 'n':
         print("\n"*100)
         player = add_cards(player, 1)
