@@ -10,6 +10,7 @@ colors = [(color.rgb.r, color.rgb.g, color.rgb.b) for color in extract_color]
 
 # Drawing the hirst Painting
 tim = Turtle()
+tim.speed("fastest")
 
 colormode(255)
 
