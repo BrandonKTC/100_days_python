@@ -1,38 +1,49 @@
-import tkinter
+from tkinter import *
 
-window = tkinter.Tk()
+window = Tk()
 
-window.title("My GUI Program")
-window.minsize(width=500, height=300)
-window.config(padx=20, pady=20)
+window.title("Mile to Km Converter")
+window.minsize(width=200, height=100)
+window.config(padx=10, pady=10)
 
+my_input = Entry(width=10)
+my_input.grid(column=1, row=1)
 # Label
-my_label = tkinter.Label(text="My Label", font=("Arial", 24, "bold"))
-my_label.grid(column=0, row=0)
+my_label_miles = Label(text="Miles", font=("Arial", 16))
+my_label_miles.grid(column=2, row=1)
+
+my_label = Label(text="is equal to", font=("Arial", 16))
+my_label.grid(column=0, row=2)
+
+my_label_con = Label(text="0", font=("Arial", 16))
+my_label_con.grid(column=1, row=2)
+
+my_label_km = Label(text="Km", font=("Arial", 16))
+my_label_km.grid(column=2, row=2)
 
 
 def button_clicked():
-    my_button.config(command=my_input.get())
+    my_label_con.config(text=int(my_input.get())*1.6)
 
 
 # Button
-my_button = tkinter.Button(text="Click Me", command=button_clicked)
-my_button.grid(column=2, row=2)
+my_button = Button(text="Calculate", command=button_clicked)
+my_button.grid(column=1, row=3)
 
 # Entry
-my_input = tkinter.Entry(width=10)
-my_input.insert(tkinter.END, "Some text")
-my_input.grid(column=3, row=4)
+# my_input = Entry(width=10)
+# my_input.insert(END, "Some text")
+# my_input.grid(column=3, row=4)
 
-my_button_2 = tkinter.Button(text="New Button")
-my_button_2.grid(column=1, row=3)
+# my_button_2 = Button(text="New Button")
+# my_button_2.grid(column=1, row=3)
 
 # # Text
-# textInput = tkinter.Text(height=5, width=30)
+# textInput = Text(height=5, width=30)
 # textInput.focus()
-# textInput.insert(tkinter.END, "Example of multi-line text entry.")
+# textInput.insert(END, "Example of multi-line text entry.")
 # textInput.pack()
-# print(textInput.get("1.0", tkinter.END))
+# print(textInput.get("1.0", END))
 
 # Spinbox
 
@@ -41,7 +52,7 @@ my_button_2.grid(column=1, row=3)
 #     print(spinbox.get())
 
 
-# spinbox = tkinter.Spinbox(from_=0, to=10, width=5, command=spinbox_used)
+# spinbox = Spinbox(from_=0, to=10, width=5, command=spinbox_used)
 # spinbox.pack()
 
 # Scale
@@ -51,7 +62,7 @@ my_button_2.grid(column=1, row=3)
 #     print(val)
 
 
-# scale = tkinter.Scale(from_=0, to=100, command=scale_used)
+# scale = Scale(from_=0, to=100, command=scale_used)
 # scale.pack()
 
 # checkButton
@@ -61,8 +72,8 @@ my_button_2.grid(column=1, row=3)
 #     print(checked_state.get())
 
 
-# checked_state = tkinter.IntVar()
-# checkButton = tkinter.Checkbutton(
+# checked_state = IntVar()
+# checkButton = Checkbutton(
 #     text="Is On?", variable=checked_state, command=checkButton_used)
 # checked_state.get()
 # checkButton.pack()
@@ -74,11 +85,11 @@ my_button_2.grid(column=1, row=3)
 #     print(radio_state.get())
 
 
-# radio_state = tkinter.IntVar()
+# radio_state = IntVar()
 
-# radio_button_1 = tkinter.Radiobutton(
+# radio_button_1 = Radiobutton(
 #     text="Option1", value=1, variable=radio_state, command=radio_used)
-# radio_button_2 = tkinter.Radiobutton(
+# radio_button_2 = Radiobutton(
 #     text="Option2", value=2, variable=radio_state, command=radio_used)
 # radio_button_1.pack()
 # radio_button_2.pack()
@@ -90,7 +101,7 @@ my_button_2.grid(column=1, row=3)
 #     print(listbox.get(listbox.curselection()))
 
 
-# listbox = tkinter.Listbox(height=4)
+# listbox = Listbox(height=4)
 # fruits = ["Apple", "Pear", "Orange", "Banana"]
 
 # for item in fruits:
