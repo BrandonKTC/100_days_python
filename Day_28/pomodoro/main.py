@@ -48,7 +48,7 @@ def start_timer():
         timer.config(text="Break", font=(FONT_NAME, 50), fg=RED)
         checkmarks.config(text="✔"*checkmark, fg=GREEN, bg=YELLOW)
     else:
-        timer.config(text="Timer", font=(FONT_NAME, 50), fg=GREEN)
+        timer.config(text="Work", font=(FONT_NAME, 50), fg=GREEN)
         count_down(work_sec)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
