@@ -1,7 +1,35 @@
 from tkinter import *
+from tkinter import messagebox
+import random
+import string
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
+
+def generate_password():
+    password = ''.join(random.choice(string.ascii_lowercase +
+                                     string.ascii_uppercase + string.digits + string.punctuation) for _ in range(20))
+    password_entry.insert(END, password)
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
+
+def save_password():
+    website = website_entry.get()
+    email = email_entry.get()
+    password = password_entry.get()
+
+    is_ok = messagebox.askokcancel(
+        title=website, message=f"These are the details entered: \nEmail: {email}"
+        f" \nPassword: {password} \n Is it ok to save?")
+
+    if is_ok and password:
+        with open("data.txt", "a") as f:
+            f.write(f"{website} : email = {email}, password = {password}\n")
+
+        website_entry.delete(0, END)
+        email_entry.delete(0, END)
+        password_entry.delete(0, END)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -32,9 +60,9 @@ password_entry = Entry(width=21)
 password_entry.grid(column=1, row=3)
 
 # Buttons
-password_button = Button(text="Generate Password")
+password_button = Button(text="Generate Password", command=generate_password)
 password_button.grid(column=2, row=3)
-add_button = Button(text="Add", width=36)
+add_button = Button(text="Add", width=36, command=save_password)
 add_button.grid(column=1, row=4, columnspan=2)
 
 window.mainloop()
