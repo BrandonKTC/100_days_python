@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+import json
 import random
 import string
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -13,18 +14,41 @@ def generate_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 
+def search_password():
+    website = website_entry.get().lower()
+
+    with open("data.json", "r") as data_file:
+        data = json.load(data_file)
+        try:
+            search = data[website]
+        except KeyError:
+            messagebox.showinfo(title="Website doesn't exist",
+                                message="I'm Sorry you havn't register this website yet")
+        else:
+            email_entry.insert(END, search["email"])
+            password_entry.insert(END, search["password"])
+
+# ---------------------------- SAVE PASSWORD ------------------------------- #
+
+
 def save_password():
-    website = website_entry.get()
+    website = website_entry.get().lower()
     email = email_entry.get()
     password = password_entry.get()
 
-    is_ok = messagebox.askokcancel(
-        title=website, message=f"These are the details entered: \nEmail: {email}"
-        f" \nPassword: {password} \n Is it ok to save?")
+    new_data = {
+        website: {
+            "email": email,
+            "password": password
+        }
+    }
 
-    if is_ok and password:
-        with open("data.txt", "a") as f:
-            f.write(f"{website} : email = {email}, password = {password}\n")
+    if len(password) != 0:
+        with open("data.json", "r") as f:
+            data = json.load(f)
+            data.update(new_data)
+        with open("data.json", "w") as f:
+            json.dump(data, f, indent=4)
 
         website_entry.delete(0, END)
         email_entry.delete(0, END)
@@ -51,8 +75,8 @@ password_label = Label(text="Password:")
 password_label.grid(column=0, row=3)
 
 # Entries
-website_entry = Entry(width=35)
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry = Entry(width=21)
+website_entry.grid(column=1, row=1)
 website_entry.focus()
 email_entry = Entry(width=35)
 email_entry.grid(column=1, row=2, columnspan=2)
@@ -60,6 +84,8 @@ password_entry = Entry(width=21)
 password_entry.grid(column=1, row=3)
 
 # Buttons
+search_button = Button(text="Search", width=14, command=search_password)
+search_button.grid(column=2, row=1)
 password_button = Button(text="Generate Password", command=generate_password)
 password_button.grid(column=2, row=3)
 add_button = Button(text="Add", width=36, command=save_password)
