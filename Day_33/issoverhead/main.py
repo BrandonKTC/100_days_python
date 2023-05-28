@@ -35,9 +35,11 @@ time_now = datetime.now()
 # If the ISS is close to my current position
 while True:
 
-    if abs(iss_longitude - MY_LONG) < 10 and abs(iss_latitude - MY_LAT) < 10:
+    time.sleep(60)
+
+    if abs(iss_longitude - MY_LONG) < 5 and abs(iss_latitude - MY_LAT) < 5:
         # and it is currently dark
-        if time_now.hour >= sunset:
+        if time_now.hour >= sunset or time_now.hour <= sunrise:
             # Then send me an email to tell me to look up.
             connection = smtplib.SMTP("smtp.gmail.com", 587)
             connection.ehlo()
@@ -45,5 +47,4 @@ while True:
             connection.login(user=my_email, password=my_password)
             connection.sendmail(from_addr=my_email, to_addrs=my_email,
                                 msg="Subject: ISS OVERHEAD\n\n Look up")
-    time.sleep(60)
 # BONUS: run the code every 60 seconds.
