@@ -1,5 +1,5 @@
 from question_model import Question
-from data import question_data
+from questions import question_data
 from ui import QuizInterface
 from quiz_brain import QuizBrain
 
