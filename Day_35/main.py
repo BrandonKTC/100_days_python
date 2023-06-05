@@ -7,7 +7,7 @@ account_sid = "AC99482de55ddc023fe19665ccdb5e4e49"
 auth_token = "b64e37af264e187cdb7f292a86d27581"
 
 weather_params = {
-    "lat":  43.769562,
+    "lat":  43.769562,  # Fiorentina
     "lon":  11.255814,
     "appid": api_key,
     "exclude": "current,minutely,daily"
