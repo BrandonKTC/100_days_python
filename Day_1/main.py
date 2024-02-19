@@ -10,7 +10,21 @@
 #     print('e.g.print("Hello " + "world")')
 # print(("New lines can be created with a backslash and n.")
 
-print("Day 1 - String Manipulation")
-print("String Concatenation is done with the \"+\" sign.")
-print('e.g.print("Hello " + "world")')
-print("New lines can be created with a backslash and n.")
+# print("Day 1 - String Manipulation")
+# print("String Concatenation is done with the \"+\" sign.")
+# print('e.g.print("Hello " + "world")')
+# print("New lines can be created with a backslash and n.")
+
+# name = input("What is your name? ")
+# print(f"Hello {name}")
+
+# There are two variables, a and b from input
+a = input()
+b = input()
+
+c = a
+a = b
+b = c
+
+print(f"a: {a}")
+print(f"b: {b}")
